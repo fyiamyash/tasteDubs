@@ -15,10 +15,12 @@ function TabComponent() {
     };
     return (
         <Box sx={{ width: '100%', bgcolor: 'Transparent' }}>
-          <Tabs value={value} onChange={handleChange} centered  >
-            <Tab label="Burgers" sx={{fontWeight:'Bold'}}/>
-            <Tab label="Wraps" sx={{fontWeight:'Bold'}}/>
-            <Tab label="Sliders" sx={{fontWeight:'Bold'}}/>
+          <Tabs value={value} onChange={handleChange} centered 
+          indicatorColor="secondary" 
+          TabIndicatorProps={{ style: { backgroundColor: 'black' } }}>
+            <Tab label="Burgers" sx={{fontWeight:'Bold',color: value === 0 ? 'black' : 'inherit'}}/>
+            <Tab label="Wraps" sx={{fontWeight:'Bold',color: value === 0 ? 'black' : 'inherit'}}/>
+            <Tab label="Sliders" sx={{fontWeight:'Bold',color: value === 0 ? 'black' : 'inherit'}}/>
           </Tabs>
         </Box>
       );

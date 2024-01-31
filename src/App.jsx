@@ -10,6 +10,7 @@ import {
 import './App.css'
 import Home from './Home'
 import AdminPage from './AdminPage'
+import LogIn from './LogIn';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -23,6 +24,7 @@ function App() {
       <Route path={"/"} element ={ <div className="home-page">
       <Home />
     </div>} />
+    <Route path={"/logIn"} element={<LogIn />} />
     </Routes>
      </Router>
     </>

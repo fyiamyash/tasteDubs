@@ -46,7 +46,7 @@ function AdminPage() {
             }
         }
         callMe();
-    }, [])
+    }, [burger,wrap,slider])
 
     return <>
         <TdAppbar />
@@ -77,16 +77,17 @@ function DisplayMenu(props) {
 }
 function ItemCard(props) {
     return (<div style={{
-        width: "90%",
+        width: "80%",
         height: "500px",
-        marginLeft: "70px",
+        marginLeft: "180px",
         marginTop: "20px",
-        backgroundColor: "grey",
+        backgroundColor: "#ffee58",
         padding: "20px",
         display: "flex",
-        flexWrap: "nowrap",
+        flexWrap: "wrap",
         gap:"20px", 
         justifyContent: "flex-start",
+        alignContent:"flex-start",
         overflowY: "scroll"
     }}>
         {props.burger.map(item => (
@@ -100,11 +101,11 @@ function RectangleCard(props) {
             width: '300px',
             height: '50px',
             maxHeight: '500px',
-            backgroundColor: 'lightblue',
+            backgroundColor: 'transparent',
             borderRadius: '10px',
             padding: '10px',
             marginBottom: '20px',
-            boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
+            // boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
         }}>
             <h3>{props.value.description}</h3>
             <p>Rs.{props.value.price}</p>

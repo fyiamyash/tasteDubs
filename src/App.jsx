@@ -19,7 +19,7 @@ function App() {
     <>
     <Router>
     <Routes>
-      <Route path={"/adminPage"} element ={<AdminPage />} />
+      <Route path={"/menu"} element ={<AdminPage />} />
       <Route path={"/"} element ={ <div className="home-page">
       <Home />
     </div>} />

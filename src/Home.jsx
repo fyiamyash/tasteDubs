@@ -4,10 +4,10 @@ function Home()
 {
     return<>
     <TdAppbar />
-    <section class="one">
+    <section className="one">
         <div className="container">
             <div className="hero">
-                <h2>Abs are cool. <span>But Have you ever tried our burgers </span></h2>
+                <h2>Fitness is cool, <span>But Have you ever tried our burgers ?</span></h2>
                 <p>
                 every bite is a delightful adventure! <br/>
                 Sink your teeth into our mouthwatering burgers crafted with love and passion.<br/>
@@ -18,7 +18,7 @@ function Home()
         </div>
     </section>
 
-    <section class="two">
+    <section className="two">
         <div className="container">
             <div className="hero">
                 <h2>Delicacy at it's best<span>Bite into happiness at our burger cafe</span></h2>
@@ -31,7 +31,7 @@ function Home()
         </div>
     </section>
 
-    <section class="three">
+    <section className="three">
         <h1>TASTE DUBS!</h1>
     </section>
     </>

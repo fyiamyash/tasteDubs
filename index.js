@@ -2,10 +2,24 @@ const express = require('express');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const { Admin, Menu } = require('./db.js');
+const cors = require('cors');
 const app = express();
 const port = 3000;
 
 app.use(express.json());
+app.use(cors());
+const allowedOrigins = ['http://localhost:5173'];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // Check if the origin is allowed
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
 
 const adminScretkey = "fromtasteDubs2017$$"
 const generateToken = (username) => {
@@ -15,16 +29,21 @@ const generateToken = (username) => {
 
 const authAdminJwt = (req, res, next) => {
     const authHeader = req.headers.authorization;
+    if(authHeader){
     const payload = authHeader.split(' ')[1];
     jwt.verify(payload, adminScretkey, (error, user) => {
         if (error) {
             console.log(error);
+            res.sendStatus(403);
         }
         else {
             req.user = user;
             next();
         }
     })
+}else{
+    res.sendStatus(403);
+}
 }
 
     app.get('/me', (req, res) => {

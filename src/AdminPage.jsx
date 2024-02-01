@@ -3,7 +3,7 @@ import TdAppbar from "./TdAppbar";
 import TabComponent from "./TabComponent";
 import { useRecoilValue } from "recoil";
 import { tabValue } from "./store/atoms/tabValue";
-import { Typography } from "@mui/material";
+import SpeedDialComponent from "./SpeedDialComponent";
 
 function AdminPage() {
     const [menu, setMenu] = useState([]);
@@ -46,34 +46,29 @@ function AdminPage() {
             }
         }
         callMe();
-    }, [burger,wrap,slider])
+    }, [])
+    if(localStorage.getItem("token") !=="null")
+    {
+        return <>
+       
+        <TdAppbar />
+        <TabComponent />
+        {tabValueDiv === 0 ? (<ItemCard burger={burger} />)
+            : tabValueDiv === 1 ? (<ItemCard burger={wrap} />)
+                : (<ItemCard burger={slider} />)}
 
+        <SpeedDialComponent />
+
+    </>
+    }
     return <>
         <TdAppbar />
         <TabComponent />
         {tabValueDiv === 0 ? (<ItemCard burger={burger} />)
             : tabValueDiv === 1 ? (<ItemCard burger={wrap} />)
                 : (<ItemCard burger={slider} />)}
-        {/* <RectangleCard /> */}
 
     </>
-}
-function DisplayMenu(props) {
-    return (
-        <div style={{
-            marginLeft: "50px",
-            marginTop: "50px"
-        }}>
-
-            {props.menu.map((item, index) => (
-                <div key={index}>
-                    <h2>{item.title}</h2><br />
-                    <h3>{item.description}</h3><br />
-                    <h3>{item.price}</h3><br /> <br />
-                </div>
-            ))}
-        </div>
-    );
 }
 function ItemCard(props) {
     return (<div style={{
@@ -90,12 +85,31 @@ function ItemCard(props) {
         alignContent:"flex-start",
         overflowY: "scroll"
     }}>
-        {props.burger.map(item => (
-            <RectangleCard value={item} />
+        {props.burger.map((item,index) => (
+            <RectangleCard key={index} value={item} />
         ))}
     </div>);
 }
 function RectangleCard(props) {
+    if(localStorage.getItem("token") !=="null")
+    {
+        return (
+            <div style={{
+                width: '300px',
+                height: '50px',
+                maxHeight: '500px',
+                backgroundColor: 'transparent',
+                borderRadius: '10px',
+                padding: '10px',
+                marginBottom: '20px',
+                // boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
+            }}>
+                <h3>{props.value.description}</h3>
+                <p>Rs.{props.value.price}</p>
+                <p>ID: {props.value._id}</p>
+            </div>
+        );
+    }
     return (
         <div style={{
             width: '300px',

@@ -11,6 +11,7 @@ import './App.css'
 import Home from './Home'
 import AdminPage from './AdminPage'
 import LogIn from './LogIn';
+import AuthPage from './AuthPage';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -25,6 +26,7 @@ function App() {
       <Home />
     </div>} />
     <Route path={"/logIn"} element={<LogIn />} />
+    <Route path={"/authPage"} element={<AuthPage />} />
     </Routes>
      </Router>
     </>
